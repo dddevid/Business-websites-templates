@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SilverSupport - Professional Tech Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <div class="demo-notice" data-translate="demo_notice">⚠️ This is a portfolio demo, not a real website or business</div>
+    
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="changeLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="changeLanguage('it')">IT</button>
+        <button class="lang-btn" onclick="changeLanguage('de')">DE</button>
+        <button class="lang-btn" onclick="changeLanguage('al')">AL</button>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <nav>
+        <div class="logo">SilverSupport</div>
+        <div class="nav-links">
+            <a href="#home" data-translate="home">Home</a>
+            <a href="#services" data-translate="services">Services</a>
+            <a href="#about" data-translate="about">About</a>
+            <a href="#contact" data-translate="contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1 data-translate="hero_title" data-aos="fade-up">Expert Tech Support for All Your Devices</h1>
+        <p data-translate="hero_subtitle" data-aos="fade-up" data-aos-delay="100">Professional assistance for computers, smartphones, and tablets</p>
+        <a href="#contact" class="cta-button" data-translate="get_support" data-aos="fade-up" data-aos-delay="200">Get Support Now</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2 data-translate="our_services" data-aos="fade-up">Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db" alt="Computer Support">
+                <h3 data-translate="computer_support">Computer Support</h3>
+                <p data-translate="computer_desc">Windows, Mac, and Linux expertise</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Mobile Support">
+                <h3 data-translate="mobile_support">Mobile Support</h3>
+                <p data-translate="mobile_desc">Smartphone and tablet solutions</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8" alt="Network Support">
+                <h3 data-translate="network_support">Network Support</h3>
+                <p data-translate="network_desc">WiFi and connectivity issues</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 data-translate="about_title" data-aos="fade-up">About SilverSupport</h2>
+        <div class="about-content">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Team" data-aos="fade-up">
+            <div class="about-text" data-aos="fade-up">
+                <p data-translate="about_p1"></p>
+                <p data-translate="about_p2"></p>
+                <p data-translate="about_p3"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 data-translate="testimonials_title" data-aos="fade-up">What Our Clients Say</h2>
+        <div class="testimonial-carousel" data-aos="fade-up">
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <p class="testimonial-text" data-translate="testimonial1_text">"Their support team is incredible! They solved my computer issues within minutes. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Sarah Mitchell" class="author-img">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonial1_name">Sarah Mitchell</div>
+                            <div class="author-title" data-translate="testimonial1_title">Graphic Designer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <p class="testimonial-text" data-translate="testimonial2_text">"Fast, professional, and extremely knowledgeable. They've become our go-to tech support team."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" alt="David Chen" class="author-img">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonial2_name">David Chen</div>
+                            <div class="author-title" data-translate="testimonial2_title">Software Engineer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-slide">
+                <div class="testimonial-content">
+                    <p class="testimonial-text" data-translate="testimonial3_text">"They helped set up our entire office network. Their expertise is unmatched!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80" alt="Emma Thompson" class="author-img">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonial3_name">Emma Thompson</div>
+                            <div class="author-title" data-translate="testimonial3_title">Business Owner</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn prev-btn" onclick="moveSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" onclick="moveSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 data-translate="contact_title" data-aos="fade-up">Contact Us</h2>
+        <div class="contact-info" data-aos="fade-up">
+            <div>
+                <i class="fas fa-phone"></i>
+                <span data-translate="phone">Phone</span>
+                <span>+1 (555) 123-4567</span>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <span data-translate="email">Email</span>
+                <span>support@silversupport.com</span>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-translate="address">Address</span>
+                <span>123 Tech Street, Digital City</span>
+            </div>
+        </div>
+    </section>
+
+    <button class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer>
+        <p>&copy; 2023 SilverSupport. <span data-translate="footer_text">All rights reserved.</span></p>
+        <p><a href="credits.html" style="color: white; text-decoration: none; opacity: 0.8; margin-top: 0.5rem; display: inline-block;" data-translate="image_credits">Image Credits</a></p>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Language switching functionality
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+            });
+
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[lang][key];
+            });
+        }
+
+        // Update language switching to preload translations
+        document.addEventListener('DOMContentLoaded', function() {
+            changeLanguage('en'); // Set initial language
+            
+            // Fix smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+
+        // Scroll to top functionality
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        let currentSlide = 1;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.className = 'testimonial-slide';
+                
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index === (currentSlide - 1 + slides.length) % slides.length) {
+                    slide.classList.add('prev');
+                } else if (index === (currentSlide + 1) % slides.length) {
+                    slide.classList.add('next');
+                }
+            });
+        }
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlides();
+        }
+
+        // Initialize slides
+        updateSlides();
+
+        // Auto advance slides every 5 seconds
+        setInterval(() => moveSlide(1), 5000);
+    </script>
+</body>
+</html>
