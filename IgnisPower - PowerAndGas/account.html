@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - IgnisPower</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="portfolio-notice">This is a demo website for portfolio purposes only</div>
+    
+    <nav>
+        <div class="logo">IgnisPower</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="account.html">My Account</a>
+        </div>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <h2 data-aos="fade-down">My Energy Dashboard</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card" data-aos="fade-right" data-aos-delay="100">
+                <h3>Electricity Usage</h3>
+                <canvas id="electricityChart"></canvas>
+                <div class="usage-summary">
+                    <p>Monthly Usage: 450 kWh</p>
+                    <p>Cost: $125.50</p>
+                </div>
+            </div>
+            
+            <div class="stat-card" data-aos="fade-left" data-aos-delay="200">
+                <h3>Gas Usage</h3>
+                <canvas id="gasChart"></canvas>
+                <div class="usage-summary">
+                    <p>Monthly Usage: 80 therms</p>
+                    <p>Cost: $95.20</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>1-800-IGNIS-POWER</p>
+                <p>contact@ignispower.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">About Us</a>
+                <a href="#">Services</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 IgnisPower. Demo website for portfolio purposes only.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
