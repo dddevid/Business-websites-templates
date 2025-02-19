@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart & Payment - VOIP Numbers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Disclaimer Banner -->
+  <div class="demo-notice">
+    This is only a portfolio project.
+  </div>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="logo">VOIP Numbers</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="albania.html">Albanian Numbers</a>
+      <a href="italy.html">Italian Numbers</a>
+      <a href="usa.html">American Numbers</a>
+      <a href="germany.html">German Numbers</a>
+      <a href="switzerland.html">Swiss Numbers</a>
+      <a href="canada.html">Canadian Numbers</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="checkout.html" class="active">Cart</a>
+    </div>
+  </nav>
+  
+  <section class="hero">
+    <h1>Your Cart</h1>
+    <p>Review the selected VOIP numbers and proceed to payment.</p>
+  </section>
+  
+  <!-- Cart Items Section -->
+  <section class="services">
+    <h2>Products in Cart</h2>
+    <div id="cartItems" class="service-grid">
+        <!-- Empty cart state -->
+        <div class="empty-cart">
+            <div class="empty-cart-icon">🛒</div>
+            <h3>Your cart is empty</h3>
+            <p>Looks like you haven't added any VOIP numbers to your cart yet.</p>
+            <a href="index.html" class="cta-button">
+                <span>Browse Numbers</span>
+                <span>→</span>
+            </a>
+        </div>
+    </div>
+  </section>
+  
+  <div class="checkout-container">
+    <div class="checkout-form">
+        <h2>Checkout</h2>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label for="expiry">Expiry Date</label>
+                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="XXX" required>
+                </div>
+            </div>
+            <button type="submit" class="checkout-btn">Complete Purchase</button>
+        </form>
+    </div>
+
+    <div class="checkout-summary">
+        <h3>Order Summary</h3>
+        <div id="checkout-items">
+            <!-- Items will be dynamically inserted here -->
+        </div>
+        <div class="checkout-total">
+            <div class="checkout-total-row">
+                <span>Subtotal</span>
+                <span id="subtotal">€0.00</span>
+            </div>
+            <div class="checkout-total-row">
+                <span>VAT (22%)</span>
+                <span id="vat">€0.00</span>
+            </div>
+            <div class="checkout-total-row final">
+                <span>Total</span>
+                <span id="total">€0.00</span>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="albania.html">Albanian Numbers</a></li>
+                <li><a href="italy.html">Italian Numbers</a></li>
+                <li><a href="usa.html">US Numbers</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <ul>
+                <li>Email: demo@voipnumbers.com</li>
+                <li>Phone: +1 234 567 890</li>
+                <li>Address: Demo Street, 12345</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 VoIP Numbers. This is a portfolio demo project.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-Top Button and Dark Mode Toggle -->
+  <button class="scroll-top" id="scrollTopBtn">&#8679;</button>
+  <button class="theme-toggle" id="themeToggleBtn">🌓</button>
+  
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartItemsContainer = document.getElementById('cartItems');
+        const checkoutContainer = document.querySelector('.checkout-container');
+        
+        function updateCheckoutDisplay() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p>Looks like you haven't added any VOIP numbers to your cart yet.</p>
+                        <a href="index.html" class="cta-button">
+                            <span>Browse Numbers</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                `;
+                checkoutContainer.style.display = 'none';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                let subtotal = 0;
+                
+                cart.forEach((item, index) => {
+                    subtotal += parseFloat(item.price);
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'checkout-item';
+                    itemDiv.innerHTML = `
+                        <img src="${item.img}" alt="${item.title}">
+                        <div class="checkout-item-details">
+                            <h4>${item.title}</h4>
+                            <p>Monthly subscription</p>
+                        </div>
+                        <div>€${item.price}</div>
+                        <button onclick="removeItem(${index})" class="remove-item">×</button>
+                    `;
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+
+                const vat = subtotal * 0.22;
+                const total = subtotal + vat;
+
+                document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
+                document.getElementById('vat').textContent = `€${vat.toFixed(2)}`;
+                document.getElementById('total').textContent = `€${total.toFixed(2)}`;
+                
+                checkoutContainer.style.display = 'grid';
+            }
+        }
+
+        // Funzione per rimuovere un elemento
+        window.removeItem = function(index) {
+            cart.removeItem(index);
+            updateCheckoutDisplay();
+        };
+
+        // Gestione form di pagamento
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('This is a demo project. No actual payment will be processed.');
+            cart.clearCart();
+            updateCheckoutDisplay();
+        });
+
+        // Inizializzazione pagina
+        updateCheckoutDisplay();
+    });
+  </script>
+</body>
+</html>
