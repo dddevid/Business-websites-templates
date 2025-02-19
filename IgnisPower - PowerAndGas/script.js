@@ -19,12 +19,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
             });
         }
+        // Close mobile menu if open
+        navLinks.classList.remove('active');
     });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Scroll reveal animation
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up, .stagger-animation > *').forEach((el) => {
+    observer.observe(el);
 });
 
 // Charts initialization (only on account page)
