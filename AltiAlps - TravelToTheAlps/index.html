@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltiAlps - Alpine Adventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <nav class="glass-nav">
+        <div class="logo">AltiAlps</div>
+        <div class="nav-controls">
+            <select id="languageSelect" class="language-select">
+                <option value="en">🇬🇧 EN</option>
+                <option value="it">🇮🇹 IT</option>
+            </select>
+            <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 data-translate="hero-title">Discover the Italian Alps</h1>
+        <p data-translate="hero-subtitle">Join fellow adventurers in exploring the most beautiful peaks</p>
+    </header>
+
+    <main>
+        <section id="locations" class="glass-section">
+            <h2 data-translate="destinations-title">Our Destinations</h2>
+            <div class="location-grid">
+                <div class="location-card" data-aos="fade-up">
+                    <h3>Cervino</h3>
+                    <img src="https://images.unsplash.com/photo-1516382772789-f9bfd7cb7532" alt="Cervino">
+                    <p data-translate="cervino-desc">Experience the majesty of the Matterhorn from the Italian side.</p>
+                </div>
+                <div class="location-card" data-aos="fade-up">
+                    <h3>Monte Bianco</h3>
+                    <img src="https://www.lovevda.it/Media/LovevdaResp/_Profiles/2f7c608a/c8cdf4d/VALLE%20D'AOSTA-Skyway%20Monte%20Bianco%20(foto%20S%C3%A9bastien%20Montaz)-22%20(2).jpg?v=638308084640000000" alt="Monte Bianco">
+                    <p data-translate="bianco-desc">Explore Europe's highest peak with experienced guides.</p>
+                </div>
+                <div class="location-card" data-aos="fade-up">
+                    <h3>Monte Rosa</h3>
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Monte Rosa">
+                    <p data-translate="rosa-desc">Discover the stunning Monte Rosa massif and its glaciers.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="disclaimer-wrapper">
+            <section id="disclaimer" class="glass-section compact">
+                <div class="disclaimer-content">
+                    <h2 data-translate="disclaimer-title">Disclaimer</h2>
+                    <p data-translate="disclaimer-text">This website is a portfolio project and does not represent a real business. All content is fictional and created for demonstration purposes only.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="glass-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AltiAlps</h3>
+                <p data-translate="footer-desc">Your gateway to Italian Alpine adventures</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="quick-links">Quick Links</h3>
+                <ul>
+                    <li><a href="#locations" data-translate="destinations">Destinations</a></li>
+                    <li><a href="#disclaimer" data-translate="disclaimer">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate="contact">Contact</h3>
+                <p>Email: info@altialps.demo</p>
+                <p>Tel: +00 000 000 0000</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AltiAlps - Portfolio Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

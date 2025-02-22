@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoctorTeeth - Professional Dental Care</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <nav class="glass-nav">
+        <div class="nav-content">
+            <div class="logo">DoctorTeeth</div>
+            <div class="nav-links">
+                <a href="#home" data-en="Home" data-it="Casa" data-al="Shtëpi">Home</a>
+                <a href="#services" data-en="Services" data-it="Servizi" data-al="Shërbimet">Services</a>
+                <a href="#about" data-en="About" data-it="Chi Siamo" data-al="Rreth Nesh">About</a>
+                <a href="#contact" data-en="Contact" data-it="Contatti" data-al="Kontakt">Contact</a>
+            </div>
+            <div class="controls">
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="it">Italiano</option>
+                    <option value="al">Shqip</option>
+                </select>
+                <button id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="parallax-section">
+        <div class="glass-card hero-card">
+            <h1 class="gradient-text" data-en="Revolutionary Purple Whitening" 
+                data-it="Sbiancamento Rivoluzionario Viola" 
+                data-al="Zbardhje Revolucionare Vjollcë">
+                Revolutionary Purple Whitening
+            </h1>
+            <div class="hero-content">
+                <p class="hero-text" data-en="Advanced chromatic neutralization for instant dental brilliance" 
+                   data-it="Neutralizzazione cromatica avanzata per brillantezza dentale istantanea" 
+                   data-al="Neutralizim kromatik i avancuar për shkëlqim të menjëhershëm dentar">
+                    Advanced chromatic neutralization for instant dental brilliance
+                </p>
+                <div class="cta-container">
+                    <a href="#products" class="cta-button primary">
+                        <i class="fas fa-flask"></i>
+                        <span data-en="Explore Formulas" data-it="Esplora Formule" data-al="Eksploro Formulat">
+                            Explore Formulas
+                        </span>
+                    </a>
+                    <a href="#color-theory" class="cta-button secondary">
+                        <i class="fas fa-atom"></i>
+                        <span data-en="Scientific Approach" data-it="Approccio Scientifico" data-al="Qasje Shkencore">
+                            Scientific Approach
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="color-theory" class="color-theory-section">
+        <div class="glass-card theory-card">
+            <h2 class="gradient-text" data-en="Chromatic Neutralization Science" 
+                data-it="Scienza della Neutralizzazione Cromatica" 
+                data-al="Shkenca e Neutralizimit Kromatik">
+                Chromatic Neutralization Science
+            </h2>
+            <div class="theory-content">
+                <p class="scientific-text" data-en="Our revolutionary formula utilizes advanced chromatic opposition principles. The carefully calibrated purple pigments (wavelength 400-450nm) directly counteract yellow discoloration (570-590nm) through selective light absorption and reflection, resulting in immediate visual whitening. This process, known as complementary color neutralization, creates an optical enhancement that transforms your smile instantly."
+                   data-it="La nostra formula rivoluzionaria utilizza principi avanzati di opposizione cromatica. I pigmenti viola accuratamente calibrati (lunghezza d'onda 400-450nm) contrastano direttamente lo scolorimento giallo (570-590nm) attraverso l'assorbimento e la riflessione selettiva della luce, risultando in un immediato sbiancamento visivo. Questo processo, noto come neutralizzazione del colore complementare, crea un miglioramento ottico che trasforma il tuo sorriso istantaneamente."
+                   data-al="Formula jonë revolucionare përdor parime të avancuara të kundërshtimit kromatik. Pigmentet vjollcë të kalibruara me kujdes (gjatësi vale 400-450nm) kundërshtojnë direkt çngjyrosjen e verdhë (570-590nm) përmes absorbimit dhe reflektimit selektiv të dritës, duke rezultuar në zbardhje të menjëhershme vizuale. Ky proces, i njohur si neutralizimi i ngjyrave plotësuese, krijon një përmirësim optik që transformon buzëqeshjen tuaj menjëherë.">
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="glass-card">
+            <h2 data-en="Exclusive Flavors" data-it="Sapori Esclusivi" data-al="Shije Ekskluzive">
+                Exclusive Flavors
+            </h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Energy Boost</h3>
+                    <p data-en="Experience the rush of energy drink flavor while whitening your teeth"
+                       data-it="Prova il brivido del sapore energy drink mentre sbianchi i denti"
+                       data-al="Përjetoni vrullin e shijes së pijeve energjike ndërsa zbardhin dhëmbët">
+                    </p>
+                    <span class="flavor-badge">Limited Edition</span>
+                </div>
+                <div class="product-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Dubai Chocolate</h3>
+                    <p data-en="Luxury meets efficiency with our premium chocolate flavor"
+                       data-it="Il lusso incontra l'efficienza con il nostro sapore di cioccolato premium"
+                       data-al="Luksi takon efikasitetin me shijen tonë premium të çokollatës">
+                    </p>
+                    <span class="flavor-badge">Premium</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="glass-card">
+            <h2 data-en="How It Works" data-it="Come Funziona" data-al="Si Funksionon">How It Works</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-magic"></i>
+                    <h3 data-en="Purple Technology" data-it="Tecnologia Viola" data-al="Teknologjia Vjollcë">Purple Technology</h3>
+                    <p data-en="Our revolutionary purple formula neutralizes yellow stains instantly" 
+                       data-it="La nostra rivoluzionaria formula viola neutralizza istantaneamente le macchie gialle" 
+                       data-al="Formula jonë revolucionare vjollcë neutralizon menjëherë njollat e verdha">
+                        Our revolutionary purple formula neutralizes yellow stains instantly
+                    </p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-clock"></i>
+                    <h3 data-en="Instant Results" data-it="Risultati Istantanei" data-al="Rezultate të Menjëhershme">Instant Results</h3>
+                    <p data-en="See the difference after just one use" 
+                       data-it="Vedi la differenza dopo un solo utilizzo" 
+                       data-al="Shihni ndryshimin pas vetëm një përdorimi">
+                        See the difference after just one use
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="glass-card">
+            <h2 data-en="About Us" data-it="Chi Siamo" data-al="Rreth Nesh">About Us</h2>
+            <p data-en="With over 20 years of experience in dental care" 
+               data-it="Con oltre 20 anni di esperienza in cure dentali" 
+               data-al="Me mbi 20 vjet përvojë në kujdesin dentar">
+                With over 20 years of experience in dental care
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="glass-card">
+            <h2 data-en="Contact Us" data-it="Contattaci" data-al="Na Kontaktoni">Contact Us</h2>
+            <form id="contact-form" class="contact-form">
+                <input type="text" class="form-input" placeholder="Name" 
+                       data-en-placeholder="Name" 
+                       data-it-placeholder="Nome" 
+                       data-al-placeholder="Emri">
+                <input type="email" class="form-input" placeholder="Email" 
+                       data-en-placeholder="Email" 
+                       data-it-placeholder="Email" 
+                       data-al-placeholder="Email">
+                <button type="submit" class="submit-btn" 
+                        data-en="Send Message" 
+                        data-it="Invia Messaggio" 
+                        data-al="Dërgo Mesazhin">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-section">
+        <div class="glass-card">
+            <h2 class="gradient-text reviews-title" 
+                data-en="Customer Reviews" 
+                data-it="Recensioni dei Clienti" 
+                data-al="Vlerësimet e Klientëve">
+                Customer Reviews
+            </h2>
+            <div class="reviews-carousel">
+                <div class="reviews-track">
+                    <div class="review-card" data-position="left">
+                        <div class="review-content">
+                            <div class="review-header">
+                                <img class="reviewer-image" 
+                                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120" 
+                                     alt="Sarah M.">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-name">Sarah M.</div>
+                                    <div class="reviewer-title">Verified Customer</div>
+                                    <div class="review-stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="review-text" data-en="Amazing results after just one use! My teeth look visibly whiter."
+                               data-it="Risultati sorprendenti dopo un solo utilizzo! I miei denti appaiono visibilmente più bianchi."
+                               data-al="Rezultate të mahnitshme pas vetëm një përdorimi! Dhëmbët e mi duken dukshëm më të bardhë.">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="review-card" data-position="center">
+                        <div class="review-content">
+                            <div class="review-header">
+                                <img class="reviewer-image" 
+                                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120" 
+                                     alt="Alessandro R.">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-name">Alessandro R.</div>
+                                    <div class="reviewer-title">Premium Member</div>
+                                    <div class="review-stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="review-text" data-en="The Dubai Chocolate flavor is incredible! And it actually works!"
+                               data-it="Il sapore Dubai Chocolate è incredibile! E funziona davvero!"
+                               data-al="Shija Dubai Chocolate është e pabesueshme! Dhe funksionon vërtet!">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="review-card" data-position="right">
+                        <div class="review-content">
+                            <div class="review-header">
+                                <img class="reviewer-image" 
+                                     src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=120" 
+                                     alt="Andi K.">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-name">Andi K.</div>
+                                    <div class="reviewer-title">Regular Customer</div>
+                                    <div class="review-stars">★★★★★</div>
+                                </div>
+                            </div>
+                            <p class="review-text" data-en="Love the Energy Boost flavor, makes morning routine fun!"
+                               data-it="Adoro il gusto Energy Boost, rende divertente la routine mattutina!"
+                               data-al="E dua shijen Energy Boost, e bën rutinën e mëngjesit argëtuese!">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="review-nav prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="review-nav next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DoctorTeeth</h3>
+                <p data-en="Portfolio Project" data-it="Progetto Portfolio" data-al="Projekt Portofoli">
+                    Portfolio Project
+                </p>
+                <p data-en="This website is a demonstration of web development skills" 
+                   data-it="Questo sito web è una dimostrazione di competenze di sviluppo web" 
+                   data-al="Kjo faqe interneti është një demonstrim i aftësive të zhvillimit të internetit">
+                    This website is a demonstration of web development skills
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3 data-en="Contact" data-it="Contatti" data-al="Kontakt">Contact</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DoctorTeeth - Portfolio Project</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
