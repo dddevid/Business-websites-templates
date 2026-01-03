@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>epoXxy - Premium Epoxy Floors Dublin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .warning {
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 13px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10000;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-top: 45px;
+        }
+
+        nav {
+            position: fixed;
+            top: 45px;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .lang-switch {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .lang-switch:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 60px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            color: #ffffff;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 120px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .section p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .about-content {
+            max-width: 900px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-top: 80px;
+        }
+
+        .feature-card {
+            background: #000000;
+            padding: 50px 40px;
+            transition: background 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 400;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            margin: 80px 0;
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat h3 {
+            font-size: 52px;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .process-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: background 0.3s;
+        }
+
+        .process-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .process-number {
+            font-size: 64px;
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .process-item h4 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .process-item p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        footer {
+            background: #000000;
+            padding: 100px 60px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+            font-size: 15px;
+            transition: color 0.3s;
+            font-weight: 300;
+        }
+
+        .footer-section a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+            .nav-links {
+                gap: 20px;
+                font-size: 12px;
+            }
+            .hero {
+                padding: 0 30px;
+            }
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            .section {
+                padding: 80px 30px;
+            }
+            .features-grid, .process-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="warning">⚠️ This is a portfolio demo, not a real website or business</div>
+    
+    <div id="canvas-container"></div>
+    
+    <div class="content">
+        <nav>
+            <div class="logo">EPOXXY</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-home">Home</a>
+                <a href="#about" class="nav-about">Chi Siamo</a>
+                <a href="#services" class="nav-services">Servizi</a>
+                <a href="#gallery" class="nav-gallery">Progetti</a>
+                <a href="#contact" class="nav-contact">Contatti</a>
+                <span class="lang-switch" onclick="toggleLanguage()">EN</span>
+            </div>
+        </nav>
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="hero-title">Pavimenti in Resina Epossidica</h1>
+                <p class="hero-subtitle">Soluzioni professionali per spazi commerciali e residenziali a Dublino. Durabilità, estetica e qualità senza compromessi.</p>
+                <a href="#contact" class="cta-button cta-text">Richiedi Consulenza</a>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="about-content">
+                <h2 class="about-title">Chi Siamo</h2>
+                <p class="about-text">epoXxy è un'azienda specializzata nell'installazione di pavimenti in resina epossidica a Dublino. Offriamo soluzioni di alta qualità per progetti commerciali, industriali e residenziali, garantendo durabilità, resistenza e un'estetica moderna.</p>
+                <p class="about-text2">Lavoriamo con materiali certificati e utilizziamo tecniche all'avanguardia per assicurare risultati professionali che superano gli standard del settore. Ogni progetto viene gestito con attenzione ai dettagli e rispetto delle tempistiche concordate.</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <h3>150+</h3>
+                    <p class="stat1-text">Progetti Completati</p>
+                </div>
+                <div class="stat">
+                    <h3>12</h3>
+                    <p class="stat2-text">Anni di Esperienza</p>
+                </div>
+                <div class="stat">
+                    <h3>98%</h3>
+                    <p class="stat3-text">Clienti Soddisfatti</p>
+                </div>
+                <div class="stat">
+                    <h3>25</h3>
+                    <p class="stat4-text">Garanzia Anni</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <h2 class="services-title">I Nostri Servizi</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Pavimenti Commerciali</h3>
+                    <p class="commercial-desc">Soluzioni resistenti per negozi, uffici, showroom e spazi retail. Finiture antigraffio e facili da pulire.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pavimenti Industriali</h3>
+                    <p class="industrial-desc">Rivestimenti ad alta resistenza per magazzini, fabbriche e aree di produzione. Conformi alle normative di sicurezza.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Pavimenti Residenziali</h3>
+                    <p class="residential-desc">Soluzioni eleganti per abitazioni private. Design personalizzabile e finiture di alta qualità.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Finiture Decorative</h3>
+                    <p class="design-desc">Effetti metallici, colorazioni personalizzate e finiture trasparenti per progetti su misura.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Rivestimenti Protettivi</h3>
+                    <p class="clear-desc">Protezione trasparente per superfici in cemento esistenti. Prolunga la vita del pavimento.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Manutenzione</h3>
+                    <p class="maintenance-desc">Servizi di ripristino, lucidatura e manutenzione preventiva per mantenere i pavimenti come nuovi.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="gallery">
+            <h2 class="gallery-title">Il Nostro Processo</h2>
+            <div class="process-grid">
+                <div class="process-item">
+                    <div class="process-number">01</div>
+                    <h4 class="process1-title">Consulenza</h4>
+                    <p class="process1-desc">Analisi delle esigenze e sopralluogo gratuito</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">02</div>
+                    <h4 class="process2-title">Progettazione</h4>
+                    <p class="process2-desc">Proposta personalizzata con preventivo dettagliato</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">03</div>
+                    <h4 class="process3-title">Installazione</h4>
+                    <p class="process3-desc">Posa professionale con materiali certificati</p>
+                </div>
+                <div class="process-item">
+                    <div class="process-number">04</div>
+                    <h4 class="process4-title">Assistenza</h4>
+                    <p class="process4-desc">Garanzia estesa e supporto post-vendita</p>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EPOXXY</h3>
+                    <p class="footer-desc">Pavimenti in resina epossidica di qualità professionale per Dublino e dintorni.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="contact-title">Contatti</h3>
+                    <p>Dublin, Ireland</p>
+                    <p>+353 1 XXX XXXX</p>
+                    <a href="mailto:info@epoxxy.ie">info@epoxxy.ie</a>
+                </div>
+                <div class="footer-section">
+                    <h3 class="hours-title">Orari</h3>
+                    <p class="hours-text">Lun - Ven: 08:00 - 18:00</p>
+                    <p class="hours-text2">Sabato: 09:00 - 14:00</p>
+                    <p class="hours-text3">Domenica: Chiuso</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="social-title">Social</h3>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 epoXxy. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            it: {
+                navHome: 'Home',
+                navAbout: 'Chi Siamo',
+                navServices: 'Servizi',
+                navGallery: 'Processo',
+                navContact: 'Contatti',
+                heroTitle: 'Pavimenti in Resina Epossidica',
+                heroSubtitle: 'Soluzioni professionali per spazi commerciali e residenziali a Dublino. Durabilità, estetica e qualità senza compromessi.',
+                ctaText: 'Richiedi Consulenza',
+                aboutTitle: 'Chi Siamo',
+                aboutText: 'epoXxy è un\'azienda specializzata nell\'installazione di pavimenti in resina epossidica a Dublino. Offriamo soluzioni di alta qualità per progetti commerciali, industriali e residenziali, garantendo durabilità, resistenza e un\'estetica moderna.',
+                aboutText2: 'Lavoriamo con materiali certificati e utilizziamo tecniche all\'avanguardia per assicurare risultati professionali che superano gli standard del settore. Ogni progetto viene gestito con attenzione ai dettagli e rispetto delle tempistiche concordate.',
+                stat1Text: 'Progetti Completati',
+                stat2Text: 'Anni di Esperienza',
+                stat3Text: 'Clienti Soddisfatti',
+                stat4Text: 'Garanzia Anni',
+                servicesTitle: 'I Nostri Servizi',
+                commercialDesc: 'Soluzioni resistenti per negozi, uffici, showroom e spazi retail. Finiture antigraffio e facili da pulire.',
+                industrialDesc: 'Rivestimenti ad alta resistenza per magazzini, fabbriche e aree di produzione. Conformi alle normative di sicurezza.',
+                residentialDesc: 'Soluzioni eleganti per abitazioni private. Design personalizzabile e finiture di alta qualità.',
+                designDesc: 'Effetti metallici, colorazioni personalizzate e finiture trasparenti per progetti su misura.',
+                clearDesc: 'Protezione trasparente per superfici in cemento esistenti. Prolunga la vita del pavimento.',
+                maintenanceDesc: 'Servizi di ripristino, lucidatura e manutenzione preventiva per mantenere i pavimenti come nuovi.',
+                galleryTitle: 'Il Nostro Processo',
+                process1Title: 'Consulenza',
+                process1Desc: 'Analisi delle esigenze e sopralluogo gratuito',
+                process2Title: 'Progettazione',
+                process2Desc: 'Proposta personalizzata con preventivo dettagliato',
+                process3Title: 'Installazione',
+                process3Desc: 'Posa professionale con materiali certificati',
+                process4Title: 'Assistenza',
+                process4Desc: 'Garanzia estesa e supporto post-vendita',
+                footerDesc: 'Pavimenti in resina epossidica di qualità professionale per Dublino e dintorni.',
+                contactTitle: 'Contatti',
+                hoursTitle: 'Orari',
+                hoursText: 'Lun - Ven: 08:00 - 18:00',
+                hoursText2: 'Sabato: 09:00 - 14:00',
+                hoursText3: 'Domenica: Chiuso',
+                socialTitle: 'Social'
+            },
+            en: {
+                navHome: 'Home',
+                navAbout: 'About',
+                navServices: 'Services',
+                navGallery: 'Process',
+                navContact: 'Contact',
+                heroTitle: 'Epoxy Resin Flooring',
+                heroSubtitle: 'Professional solutions for commercial and residential spaces in Dublin. Durability, aesthetics, and uncompromising quality.',
+                ctaText: 'Request Consultation',
+                aboutTitle: 'About Us',
+                aboutText: 'epoXxy is a company specialized in the installation of epoxy resin flooring in Dublin. We offer high-quality solutions for commercial, industrial, and residential projects, guaranteeing durability, strength, and modern aesthetics.',
+                aboutText2: 'We work with certified materials and use cutting-edge techniques to ensure professional results that exceed industry standards. Every project is managed with attention to detail and respect for agreed timelines.',
+                stat1Text: 'Completed Projects',
+                stat2Text: 'Years of Experience',
+                stat3Text: 'Satisfied Clients',
+                stat4Text: 'Year Warranty',
+                servicesTitle: 'Our Services',
+                commercialDesc: 'Durable solutions for shops, offices, showrooms, and retail spaces. Scratch-resistant and easy-to-clean finishes.',
+                industrialDesc: 'High-strength coatings for warehouses, factories, and production areas. Compliant with safety regulations.',
+                residentialDesc: 'Elegant solutions for private homes. Customizable design and high-quality finishes.',
+                designDesc: 'Metallic effects, custom colors, and transparent finishes for bespoke projects.',
+                clearDesc: 'Transparent protection for existing concrete surfaces. Extends floor lifespan.',
+                maintenanceDesc: 'Restoration, polishing, and preventive maintenance services to keep floors looking new.',
+                galleryTitle: 'Our Process',
+                process1Title: 'Consultation',
+                process1Desc: 'Needs analysis and free site inspection',
+                process2Title: 'Design',
+                process2Desc: 'Customized proposal with detailed quote',
+                process3Title: 'Installation',
+                process3Desc: 'Professional installation with certified materials',
+                process4Title: 'Support',
+                process4Desc: 'Extended warranty and after-sales support',
+                footerDesc: 'Professional-grade epoxy resin flooring for Dublin and surrounding areas.',
+                contactTitle: 'Contact',
+                hoursTitle: 'Hours',
+                hoursText: 'Mon - Fri: 08:00 AM - 06:00 PM',
+                hoursText2: 'Saturday: 09:00 AM - 02:00 PM',
+                hoursText3: 'Sunday: Closed',
+                socialTitle: 'Social'
+            }
+        };
+
+        let currentLang = 'it';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            document.querySelector('.lang-switch').textContent = currentLang === 'it' ? 'EN' : 'IT';
+            
+            const t = translations[currentLang];
+            document.querySelector('.nav-home').textContent = t.navHome;
+            document.querySelector('.nav-about').textContent = t.navAbout;
+            document.querySelector('.nav-services').textContent = t.navServices;
+            document.querySelector('.nav-gallery').textContent = t.navGallery;
+            document.querySelector('.nav-contact').textContent = t.navContact;
+            document.querySelector('.hero-title').textContent = t.heroTitle;
+            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
+            document.querySelector('.cta-text').textContent = t.ctaText;
+            document.querySelector('.about-title').textContent = t.aboutTitle;
+            document.querySelector('.about-text').textContent = t.aboutText;
+            document.querySelector('.about-text2').textContent = t.aboutText2;
+            document.querySelector('.stat1-text').textContent = t.stat1Text;
+            document.querySelector('.stat2-text').textContent = t.stat2Text;
+            document.querySelector('.stat3-text').textContent = t.stat3Text;
+            document.querySelector('.stat4-text').textContent = t.stat4Text;
+            document.querySelector('.services-title').textContent = t.servicesTitle;
+            document.querySelector('.commercial-desc').textContent = t.commercialDesc;
+            document.querySelector('.industrial-desc').textContent = t.industrialDesc;
+            document.querySelector('.residential-desc').textContent = t.residentialDesc;
+            document.querySelector('.design-desc').textContent = t.designDesc;
+            document.querySelector('.clear-desc').textContent = t.clearDesc;
+            document.querySelector('.maintenance-desc').textContent = t.maintenanceDesc;
+            document.querySelector('.gallery-title').textContent = t.galleryTitle;
+            document.querySelector('.process1-title').textContent = t.process1Title;
+            document.querySelector('.process1-desc').textContent = t.process1Desc;
+            document.querySelector('.process2-title').textContent = t.process2Title;
+            document.querySelector('.process2-desc').textContent = t.process2Desc;
+            document.querySelector('.process3-title').textContent = t.process3Title;
+            document.querySelector('.process3-desc').textContent = t.process3Desc;
+            document.querySelector('.process4-title').textContent = t.process4Title;
+            document.querySelector('.process4-desc').textContent = t.process4Desc;
+            document.querySelector('.footer-desc').textContent = t.footerDesc;
+            document.querySelector('.contact-title').textContent = t.contactTitle;
+            document.querySelector('.hours-title').textContent = t.hoursTitle;
+            document.querySelector('.hours-text').textContent = t.hoursText;
+            document.querySelector('.hours-text2').textContent = t.hoursText2;
+            document.querySelector('.hours-text3').textContent = t.hoursText3;
+            document.querySelector('.social-title').textContent = t.socialTitle;
+        }
+
+        // Three.js Scene - Subtle and realistic
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Subtle floor-like geometry
+        const geometry = new THREE.PlaneGeometry(30, 30, 80, 80);
+        const vertices = geometry.attributes.position.array;
+        
+        for (let i = 0; i < vertices.length; i += 3) {
+            vertices[i + 2] = Math.sin(vertices[i] * 0.15) * Math.cos(vertices[i + 1] * 0.15) * 0.15;
+        }
+        
+        geometry.attributes.position.needsUpdate = true;
+
+        const material = new THREE.MeshPhongMaterial({
+            color: 0x1a1a1a,
+            shininess: 90,
+            transparent: true,
+            opacity: 0.9,
+            side: THREE.DoubleSide,
+            flatShading: false
+        });
+
+        const plane = new THREE.Mesh(geometry, material);
+        plane.rotation.x = -Math.PI / 2.5;
+        scene.add(plane);
+
+        // Minimal lighting
+        const light1 = new THREE.DirectionalLight(0xffffff, 0.3);
+        light1.position.set(5, 10, 5);
+        scene.add(light1);
+
+        const light2 = new THREE.DirectionalLight(0xffffff, 0.2);
+        light2.position.set(-5, 5, -5);
+        scene.add(light2);
+
+        const ambientLight = new THREE.AmbientLight(0x333333, 0.5);
+        scene.add(ambientLight);
+
+        camera.position.set(0, 3, 10);
+        camera.lookAt(0, 0, 0);
+
+        // Subtle animation
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const time = Date.now() * 0.0003;
+            
+            // Very subtle wave animation
+            const positions = plane.geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                const x = positions[i];
+                const y = positions[i + 1];
+                positions[i + 2] = Math.sin(x * 0.15 + time) * Math.cos(y * 0.15 + time * 0.8) * 0.15;
+            }
+            plane.geometry.attributes.position.needsUpdate = true;
+
+            // Minimal rotation based on scroll
+            plane.rotation.z = scrollY * 0.00005;
+            camera.position.y = 3 - (scrollY * 0.001);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
